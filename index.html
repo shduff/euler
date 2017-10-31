@@ -77,20 +77,49 @@
 		</script>
 	</section>
 
-<!-- 	<section class="prob" id="prob-3">
+	<section class="prob" id="prob-3">
 		<h1>Problem 3: Largest prime factor</h1>
 		<p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
 		<p>What is the largest prime factor of the number 600851475143?</p>
 		<p><i>Answer:</i> <span class="answer" id="answer-3"></span></p>
 
 		<script>
-			var answer_3 = 0;
+			var target = 13195;
+			var prime_nums = [2,3];
+			var factors = [];
+			var answer_3;
 
+			// This chunk gets all the factors of the target, excluding 1 and the target
+			// for (var i = 2; i < target; i++) {
+			// 	if (target % i == 0) {
+			// 		factors.push(i);
+			// 	}
+			// }
 
+			// This chunk gathers all the prime numbers less than the target
+			for (var i = 4; i <= target; i++) {
+				var i_is_prime = true;
+				for (var j in prime_nums) {
+					if (i % prime_nums[j] == 0) {
+						i_is_prime = false;
+					}
+				}
+				if (i_is_prime) {
+					prime_nums.push(i);
+				}
+			}
 
-			document.getElementById('answer-2').innerHTML = answer_2;
+			// and then chooses the largest one
+			for (var k in prime_nums) {
+				if (target % prime_nums[k] == 0) {
+					answer_3 = prime_nums[k]
+				}
+			}
+			// but it's too slow for the actual target...
+
+			document.getElementById('answer-3').innerHTML = answer_3;
 		</script>
-	</section> -->
+	</section>
 
 </body>
 </html>
